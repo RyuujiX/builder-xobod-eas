@@ -1,6 +1,6 @@
 #! /bin/bash
 branch="lynx-uc"
-BuilderKernel="00000"
+BuilderKernel="clang"
 
 if [ "$BuilderKernel" != "clang" ] && [ "$BuilderKernel" != "dtc" ] && [ "$BuilderKernel" != "gcc" ] && [ "$BuilderKernel" != "storm" ] && [ "$BuilderKernel" != "mystic" ] ;then
     exit;
