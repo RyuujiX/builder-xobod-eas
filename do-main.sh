@@ -1,6 +1,6 @@
 #! /bin/bash
-branch="lynx"
-BuilderKernel="00000"
+branch="lynx-uvc"
+BuilderKernel="gcc"
 
 if [ "$BuilderKernel" != "clang" ] && [ "$BuilderKernel" != "dtc" ] && [ "$BuilderKernel" != "gcc" ] && [ "$BuilderKernel" != "storm" ] && [ "$BuilderKernel" != "mystic" ] ;then
     exit;
@@ -8,7 +8,7 @@ fi
 . main.sh 'initial' 'full'
 
 FolderUp="BrokenNucleus"
-spectrumFile="ryuu.rc"
+spectrumFile="ishigami.rc"
 TypeBuild="Test"
 TypeBuildTag="Awokawok"
 getInfo ">> Building kernel . . . . <<"
