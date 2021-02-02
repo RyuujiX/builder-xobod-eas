@@ -3,8 +3,8 @@ echo "Cloning dependencies"
 git clone https://github.com/RyuujiX/kernel-xobod-eas -b master source
 cd source
 git clone --depth=1 https://github.com/ZyCromerZ/DragonTC -b daily/10.0 clang
-git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
-git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
+git clone https://github.com/RyuujiX/aarch64-linux-android-4.9/ -b android-10.0.0_r47 --depth=1 gcc
+git clone https://github.com/RyuujiX/arm-linux-androideabi-4.9/ -b android-10.0.0_r47 --depth=1 gcc32
 git clone --depth=1 https://github.com/RyuujiX/AnyKernel3 -b master AnyKernel
 echo "Done"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -61,8 +61,10 @@ function compile() {
     make O=out ARCH=arm64 X01BD_defconfig
     make -j$(nproc --all) O=out \
                     ARCH=arm64 \
-                  	CC="$(pwd)/clang/bin/clang" \
-                    CLANG_TRIPLE="aarch64-linux-gnu-"
+                  	CC=$(pwd)/clang/bin/clang \
+					CROSS_COMPILE=aarch64-linux-android- \
+					CROSS_COMPILE_ARM32=arm-linux-androideabi \
+                    CLANG_TRIPLE=aarch64-linux-gnu-
 
     if ! [ -a "$IMAGE" ]; then
         finerr
