@@ -1,6 +1,6 @@
 #! /bin/bash
 branch="master"
-BuilderKernel="00000"
+BuilderKernel="storm"
 
 if [ "$BuilderKernel" != "clang" ] && [ "$BuilderKernel" != "dtc" ] && [ "$BuilderKernel" != "gcc" ] && [ "$BuilderKernel" != "storm" ] && [ "$BuilderKernel" != "mystic" ] ;then
     exit;
