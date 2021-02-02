@@ -53,10 +53,10 @@ if [ ! -z "$1" ] && [ "$1" == 'initial' ];then
 	allFromClang='N'
     if [ ! -z "$2" ] && [ "$2" == 'full' ];then
         getInfo ">> cloning kernel full . . . <<"
-        git clone https://$GIT_SECRET@github.com/$GIT_USERNAME/kernel-x01bd -b "$branch" $kernelDir
+        git clone https://$GIT_SECRET@github.com/$GIT_USERNAME/kernel-xobod-eas -b "$branch" $kernelDir
     else
         getInfo ">> cloning kernel . . . <<"
-        git clone https://$GIT_SECRET@github.com/$GIT_USERNAME/kernel-x01bd -b "$branch" $kernelDir --depth=1 
+        git clone https://$GIT_SECRET@github.com/$GIT_USERNAME/kernel-xobod-eas -b "$branch" $kernelDir --depth=1 
     fi
     [ -z "$BuilderKernel" ] && BuilderKernel="clang"
     if [ "$BuilderKernel" == "clang" ];then

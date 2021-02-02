@@ -1,5 +1,5 @@
 #! /bin/bash
-branch="lynx"
+branch="master"
 BuilderKernel="00000"
 
 if [ "$BuilderKernel" != "clang" ] && [ "$BuilderKernel" != "dtc" ] && [ "$BuilderKernel" != "gcc" ] && [ "$BuilderKernel" != "storm" ] && [ "$BuilderKernel" != "mystic" ] ;then
@@ -10,21 +10,21 @@ fi
 FolderUp="BrokenNucleus"
 spectrumFile="ryuu.rc"
 TypeBuild="Stable"
-TypeBuildTag="Awokawok"
+TypeBuildTag="EAS"
 getInfo ">> Building kernel . . . . <<"
 
 CompileKernel
-CompileKernel "65"
-CompileKernel "68"
-CompileKernel "71"
+# CompileKernel "65"
+# CompileKernel "68"
+# CompileKernel "71"
 # CompileKernel "72"
 
-FixPieWifi
+# FixPieWifi
 
-CompileKernel
-CompileKernel "65"
-CompileKernel "68"
-CompileKernel "71"
+# CompileKernel
+# CompileKernel "65"
+# CompileKernel "68"
+# CompileKernel "71"
 # CompileKernel "72"
 
 tg_send_info "Semua $GetKernelName $BuilderKernel dah selesai dibuild tod :v"
