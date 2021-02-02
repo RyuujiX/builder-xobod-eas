@@ -11,7 +11,7 @@ IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 TANGGAL=$(date +"%F-%S")
 START=$(date +"%s")
 COMMIT=$(git log --pretty=format:'%h' -1)
-VARIANT="Raiton"
+VARIANT="EAS"
 KERNEL_DIR=$(pwd)
 VERSI=(""4.4.$(cat "$(pwd)/Makefile" | grep "SUBLEVEL =" | sed 's/SUBLEVEL = *//g')$(cat "$(pwd)/Makefile" | grep "EXTRAVERSION =" | sed 's/EXTRAVERSION = *//g')"")
 PATH="${KERNEL_DIR}/clang/bin:${KERNEL_DIR}/gcc/bin:${KERNEL_DIR}/gcc32/bin:${PATH}"
@@ -22,13 +22,13 @@ export KBUILD_BUILD_USER="RyuujiX"
 
 # sticker plox
 function sticker() {
-    curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendSticker" \
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendSticker" \
         -d sticker="CAACAgEAAxkBAAEnKnJfZOFzBnwC3cPwiirjZdgTMBMLRAACugEAAkVfBy-aN927wS5blhsE" \
         -d chat_id=$chat_id
 }
 # Send info plox channel
 function sendinfo() {
-    curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
         -d chat_id="$chat_id" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
@@ -39,7 +39,7 @@ function sendinfo() {
 function push() {
     cd AnyKernel
     ZIP=$(echo *.zip)
-    curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
+    curl -F document=@$ZIP "https://api.telegram.org/bot$BOT_TOKEN/sendDocument" \
         -F chat_id="$chat_id" \
         -F "disable_web_page_preview=true" \
         -F "parse_mode=html" \
@@ -48,7 +48,7 @@ function push() {
 
 # Fin Error
 function finerr() {
-    curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
         -d chat_id="$chat_id" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=markdown" \
